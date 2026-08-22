@@ -1,4 +1,4 @@
-plugins: - jekyll-remote-theme 
+plugins: jekyll-remote-theme 
 remote_theme: mmistakes/minimal-mistakes
 title: Anthony Odo
 description: Data Analyst with experience using tools like SQL, Python, PowerBI and Tableau
