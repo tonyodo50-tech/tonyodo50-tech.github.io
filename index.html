@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional GitHub Pages website">
+  <title>Professional Portfolio</title>
+
+  <!-- Google Font: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-900: #062b55;
+      --blue-800: #0a3d78;
+      --blue-700: #0b5cab;
+      --blue-600: #1479d1;
+      --blue-100: #eaf4ff;
+      --blue-050: #f5faff;
+      --white: #ffffff;
+      --text: #172033;
+      --muted: #64748b;
+      --border: #dbe7f3;
+      --shadow: 0 18px 45px rgba(6, 43, 85, 0.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, nav, .btn, .eyebrow {
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--blue-900);
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      color: var(--blue-600);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-600);
+    }
+
+    .nav-cta {
+      padding: 10px 17px;
+      border-radius: 9px;
+      background: var(--blue-800);
+      color: white !important;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+      color: white;
+      padding: 105px 0 100px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .hero::before {
+      width: 430px;
+      height: 430px;
+      right: -130px;
+      top: -160px;
+    }
+
+    .hero::after {
+      width: 260px;
+      height: 260px;
+      left: -100px;
+      bottom: -150px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 1.05;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: #9fd3ff;
+    }
+
+    .hero p {
+      max-width: 690px;
+      margin-bottom: 32px;
+      color: #dcecff;
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 9px;
+      font-size: 0.87rem;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--blue-900);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
+    .hero-card {
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .stat:last-child {
+      border-bottom: 0;
+    }
+
+    .stat strong {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .stat span {
+      color: #c8def4;
+      font-size: 0.9rem;
+    }
+
+    /* General sections */
+    section {
+      padding: 88px 0;
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 42px;
+    }
+
+    .section-label {
+      margin-bottom: 10px;
+      color: var(--blue-600);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-header h2 {
+      margin-bottom: 12px;
+      color: var(--blue-900);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+    }
+
+    .about {
+      background: var(--blue-050);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 16px;
+      color: #475569;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .highlight {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 8px 25px rgba(6, 43, 85, 0.06);
+    }
+
+    .highlight strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue-800);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.25rem;
+    }
+
+    .highlight span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+      transition: 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: #b9d8f4;
+    }
+
+    .skill-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      background: var(--blue-100);
+      color: var(--blue-700);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 8px;
+      color: var(--blue-900);
+      font-size: 1.05rem;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Projects */
+    .projects {
+      background: var(--blue-050);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 8px 25px rgba(6, 43, 85, 0.05);
+    }
+
+    .project-top {
+      height: 145px;
+      display: flex;
+      align-items: flex-end;
+      padding: 22px;
+      background: linear-gradient(135deg, var(--blue-800), var(--blue-600));
+      color: white;
+    }
+
+    .project-top h3 {
+      font-size: 1.1rem;
+    }
+
+    .project-body {
+      padding: 22px;
+    }
+
+    .project-body p {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--blue-100);
+      color: var(--blue-800);
+      font-size: 0.73rem;
+      font-weight: 700;
+    }
+
+    /* Contact */
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 35px;
+      padding: 42px;
+      border-radius: 22px;
+      background: var(--blue-900);
+      color: white;
+    }
+
+    .contact-box h2 {
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .contact-box p {
+      max-width: 650px;
+      color: #c8def4;
+    }
+
+    .contact-box .btn {
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 80px 0;
+      }
+
+      .hero-card {
+        max-width: 520px;
+      }
+
+      .skills-grid,
+      .project-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .skills-grid,
+      .project-grid,
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .contact-box {
+        padding: 30px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">YOUR<span>NAME</span></a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Expertise</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Professional Portfolio</div>
+          <h1>Building <span>better solutions</span> through strategy, technology & execution.</h1>
+          <p>
+            A professional digital profile designed to showcase your experience,
+            expertise, achievements and selected projects in a clear and modern format.
+          </p>
+
+          <div class="buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Let's Connect</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Professional highlights">
+          <h3>Professional Snapshot</h3>
+          <div class="stat">
+            <span>Experience</span>
+            <strong>10+ Years</strong>
+          </div>
+          <div class="stat">
+            <span>Focus</span>
+            <strong>Strategy & Delivery</strong>
+          </div>
+          <div class="stat">
+            <span>Approach</span>
+            <strong>Data-Driven</strong>
+          </div>
+          <div class="stat">
+            <span>Location</span>
+            <strong>Nigeria</strong>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="section-header">
+          <div class="section-label">About Me</div>
+          <h2>Professional experience with a focus on measurable impact.</h2>
+          <div class="about-text">
+            <p>
+              Welcome to my professional portfolio. This section can be customized
+              with your personal introduction, career story and professional value proposition.
+            </p>
+            <p>
+              Use this space to explain the problems you solve, the industries you understand,
+              and the results you have delivered for organizations and clients.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlights">
+          <div class="highlight">
+            <strong>01</strong>
+            <span>Strategic Thinking</span>
+          </div>
+          <div class="highlight">
+            <strong>02</strong>
+            <span>Project Delivery</span>
+          </div>
+          <div class="highlight">
+            <strong>03</strong>
+            <span>Data & Analytics</span>
+          </div>
+          <div class="highlight">
+            <strong>04</strong>
+            <span>Business Growth</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Expertise</div>
+          <h2>Core capabilities</h2>
+          <p>Replace these areas with your actual professional skills and competencies.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon">01</div>
+            <h3>Project Management</h3>
+            <p>Planning, execution, stakeholder management, governance and delivery.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">02</div>
+            <h3>Business Strategy</h3>
+            <p>Turning business objectives into practical strategies and measurable outcomes.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">03</div>
+            <h3>Data Analytics</h3>
+            <p>Using data, dashboards and insights to support better business decisions.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">04</div>
+            <h3>Process Improvement</h3>
+            <p>Identifying inefficiencies and designing practical improvements for performance.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">05</div>
+            <h3>Leadership</h3>
+            <p>Coordinating teams, building accountability and delivering shared objectives.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">06</div>
+            <h3>Technology</h3>
+            <p>Applying digital tools and technology to improve productivity and customer value.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Selected Work</div>
+          <h2>Projects & achievements</h2>
+          <p>Showcase your strongest projects, initiatives, certifications or professional achievements here.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-top">
+              <h3>Project One</h3>
+            </div>
+            <div class="project-body">
+              <p>Briefly describe the project, your role, the challenge and the measurable result.</p>
+              <div class="tags">
+                <span class="tag">Strategy</span>
+                <span class="tag">Delivery</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Project Two</h3>
+            </div>
+            <div class="project-body">
+              <p>Highlight an important business, technology or transformation initiative.</p>
+              <div class="tags">
+                <span class="tag">Analytics</span>
+                <span class="tag">Business</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Project Three</h3>
+            </div>
+            <div class="project-body">
+              <p>Use this card for another major achievement, case study or portfolio item.</p>
+              <div class="tags">
+                <span class="tag">Innovation</span>
+                <span class="tag">Growth</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2>Let's work together.</h2>
+            <p>
+              Interested in discussing an opportunity, project or professional collaboration?
+              Get in touch.
+            </p>
+          </div>
+          <a href="mailto:your.email@example.com" class="btn btn-primary">Contact Me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Your Name. All rights reserved.</span>
+      <span>Professional Portfolio</span>
+    </div>
+  </footer>
+</body>
+</html>
